@@ -17,7 +17,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<Mono<User>> saveUser(User user){
+    public ResponseEntity<Mono<User>> saveUser(@RequestBody User user){
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
 
     }
@@ -32,8 +32,14 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    @PutMapping("/update/user")
-    public ResponseEntity<Mono<User>> updateUser(@PathVariable String id, User user){
-        return new ResponseEntity<>(userService.updateUser(id, user), HttpStatus.OK);
+//    @PutMapping("/update/user/{id}")
+//    public ResponseEntity<Mono<User>> updateUser(@PathVariable String id, @RequestBody User user){
+//        return new ResponseEntity<>(userService.updateUser(id,user), HttpStatus.OK);
+//    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public void  deleteUser (@PathVariable String id){
+         userService.deleteUser(id).subscribe();
+
     }
 }

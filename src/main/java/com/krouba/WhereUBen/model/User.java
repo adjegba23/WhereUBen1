@@ -9,7 +9,7 @@ import java.lang.annotation.Documented;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @Getter @Setter
 @Document(collection = "user_tbl")
 public class User {
@@ -22,3 +22,4 @@ public class User {
     private String email;
     private Role role;
 }
+
