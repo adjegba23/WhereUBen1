@@ -18,7 +18,7 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<Mono<User>> saveUser(@RequestBody User user){
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.OK);
+        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
 
     }
 
@@ -32,10 +32,10 @@ public class UserController {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-//    @PutMapping("/update/user/{id}")
-//    public ResponseEntity<Mono<User>> updateUser(@PathVariable String id, @RequestBody User user){
-//        return new ResponseEntity<>(userService.updateUser(id,user), HttpStatus.OK);
-//    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Mono<User>> updateUser(@PathVariable String id,  @RequestBody User user){
+        return new ResponseEntity<>(userService.updateUser(user, id), HttpStatus.OK);
+    }
 
     @DeleteMapping("/deleteUser/{id}")
     public void  deleteUser (@PathVariable String id){
